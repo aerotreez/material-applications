@@ -1,0 +1,20 @@
+name: Release Node.js app
+
+on:
+  push:
+    branches:
+      - main
+
+  jobs:
+    builds:
+      runs-on: ubuntu-latest
+      steps:
+        - name: checkout repo
+          uses: actions/checkout@v6
+         
+        - name: login to docker
+          uses: actions/login-action@v4
+          with:
+            username: ${{ secrets.DOCKERHUB_USERNAME }}
+            password: ${{ secrets.DOCKERHUB_TOKEN }}
+
