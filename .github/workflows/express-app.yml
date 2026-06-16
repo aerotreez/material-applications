@@ -28,3 +28,7 @@ jobs:
           push: true
           tags: robomooc/express-app:latest
 
+      - name: Deploy to Render
+        if: ${{ success() }}
+        run: curl -X POST ${{ secrets.RENDER_WEBHOOK }}
+
